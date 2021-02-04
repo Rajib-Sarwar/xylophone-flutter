@@ -9,55 +9,33 @@ class XylophoneApp extends StatelessWidget {
     audioPlayer.play('note$number.wav');
   }
 
+  Expanded buildNote({int noteNumber, Color color}) {
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playNote(noteNumber);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  playNote(1);
-                },
-              ),
-              FlatButton(
-                color: Colors.orange,
-                onPressed: () {
-                  playNote(2);
-                },
-              ),
-              FlatButton(
-                color: Colors.yellow,
-                onPressed: () {
-                  playNote(3);
-                },
-              ),
-              FlatButton(
-                color: Colors.green,
-                onPressed: () {
-                  playNote(4);
-                },
-              ),
-              FlatButton(
-                color: Colors.teal,
-                onPressed: () {
-                  playNote(5);
-                },
-              ),
-              FlatButton(
-                color: Colors.blue,
-                onPressed: () {
-                  playNote(6);
-                },
-              ),
-              FlatButton(
-                color: Colors.purple,
-                onPressed: () {
-                  playNote(7);
-                },
-              ),
+              buildNote(noteNumber: 1, color: Colors.red),
+              buildNote(noteNumber: 2, color: Colors.orange),
+              buildNote(noteNumber: 3, color: Colors.yellow),
+              buildNote(noteNumber: 4, color: Colors.green),
+              buildNote(noteNumber: 5, color: Colors.teal),
+              buildNote(noteNumber: 6, color: Colors.blue),
+              buildNote(noteNumber: 7, color: Colors.purple),
             ],
           ),
         ),
